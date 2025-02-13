@@ -35,7 +35,7 @@ public class BoundedQueueV3 implements BoundedQueue{
     @Override
     public synchronized String take() {
 
-        if (queue.isEmpty()) {
+        while (queue.isEmpty()) {
             log("[take] 큐에 데이터가 없음, 소비자 대기");
             try {
                 wait();
